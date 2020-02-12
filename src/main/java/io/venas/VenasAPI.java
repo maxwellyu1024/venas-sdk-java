@@ -124,7 +124,7 @@ public class VenasAPI {
 		ECPrivateKeyParameters privateKey = privateKeyHexToPrivateKey(privateKeyHex);
 		ECPublicKeyParameters publicKey = privateKeyToPublicKey(privateKey);
 		String publicKeyHex = publicKeyToPublicKeyHex(publicKey);
-		String keyId = publicKeyHexToKeyId(publicKeyHex);
+		String keyId = publicKeyHexToKeyId(publicKeyHex).toString();
 
 		byte[] signBytes = sign(privateKey, new String("LOGIN" + getuid.getNetwork_id() + getuid.getUid()).getBytes());
 		String signature = encodeHexString(signBytes);
@@ -176,7 +176,7 @@ public class VenasAPI {
 		ECPrivateKeyParameters privateKey = privateKeyHexToPrivateKey(privateKeyHex);
 		ECPublicKeyParameters publicKey = privateKeyToPublicKey(privateKey);
 		String publicKeyHex = publicKeyToPublicKeyHex(publicKey);
-		String keyId = publicKeyHexToKeyId(publicKeyHex);
+		String keyId = publicKeyHexToKeyId(publicKeyHex).toString();
 
 		MessagePack msgpack = new MessagePack();
 
