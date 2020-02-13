@@ -37,7 +37,7 @@ public class TestMsgPack2 {
 		ECPrivateKeyParameters privateKey = privateKeyHexToPrivateKey(privateKeyHex);
 		ECPublicKeyParameters publicKey = privateKeyToPublicKey(privateKey);
 		String publicKeyHex = publicKeyToPublicKeyHex(publicKey);
-		String keyId = publicKeyHexToKeyId(publicKeyHex).toString();
+		String keyId = publicKeyHexToKeyId(publicKeyHex);
 
 		MessagePack msgpack = new MessagePack();
 

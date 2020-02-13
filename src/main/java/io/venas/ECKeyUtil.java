@@ -38,7 +38,7 @@ public class ECKeyUtil {
 		{
 			String publicKeyHex = "047c0b8e13739447ff0b1ace9138944ed1e29077acbd4662f02bb3142423edefd1ccee88f9d5cf13fd073cb234acd15299d128b338f2ba0b601607a49adfbd2088";
 			out.println("publicKey:" + publicKeyHex);
-			String keyId = publicKeyHexToKeyId(publicKeyHex).toString();
+			String keyId = publicKeyHexToKeyId(publicKeyHex);
 			out.println("keyId:" + keyId);
 			out.println("address:" + publicKeyHexToAddress(publicKeyHex));
 		}
@@ -46,7 +46,7 @@ public class ECKeyUtil {
 		{
 			String publicKeyHex = "045ba64f393431e6f2bc10c285f88f815ee700d99fd5ad3564a3403045682e39ce6d0643c9e10469982346a640416f33ab05a8912f7694f313d9f41104d938dcb4";
 			out.println("publicKey:" + publicKeyHex);
-			String keyId = publicKeyHexToKeyId(publicKeyHex).toString();
+			String keyId = publicKeyHexToKeyId(publicKeyHex);
 			out.println("keyId:" + keyId);
 			out.println("address:" + publicKeyHexToAddress(publicKeyHex));
 		}
@@ -54,7 +54,7 @@ public class ECKeyUtil {
 		{
 			String publicKeyHex = "04607114879724c26222a3acafe3dc943fb0d75dd4e48e406656dcdef7e0777288311887b8e388017e2ae643946cc47662a257ae96b0b54f26a5b86f333081f5d9";
 			out.println("publicKey:" + publicKeyHex);
-			String keyId = publicKeyHexToKeyId(publicKeyHex).toString();
+			String keyId = publicKeyHexToKeyId(publicKeyHex);
 			out.println("keyId:" + keyId);
 			out.println("address:" + publicKeyHexToAddress(publicKeyHex));
 		}
@@ -62,7 +62,7 @@ public class ECKeyUtil {
 		{
 			String publicKeyHex = "045de13860f25d602fe8738c2cd8fe63933208cbaee3f766e6c7c152cc6c420d1545c6d63a1c775b1f7abf826760ab34c0183b59eaa95b6afeea2db028fd914da6";
 			out.println("publicKey:" + publicKeyHex);
-			String keyId = publicKeyHexToKeyId(publicKeyHex).toString();
+			String keyId = publicKeyHexToKeyId(publicKeyHex);
 			out.println("keyId:" + keyId);
 			out.println("address:" + publicKeyHexToAddress(publicKeyHex));
 		}
@@ -119,7 +119,7 @@ public class ECKeyUtil {
 			ECPublicKeyParameters publicKey = privateKeyToPublicKey(privateKey);
 			String publicKeyHex = publicKeyToPublicKeyHex(publicKey);
 			String address = publicKeyHexToAddress(publicKeyHex);
-			String KeyID = publicKeyHexToKeyId(publicKeyHex).toString();
+			String KeyID = publicKeyHexToKeyId(publicKeyHex);
 			out.println("seed:" + seed);
 			out.println("privateKeyHex:" + privateKeyHex);
 			out.println("publicKeyHex:" + publicKeyHex);
@@ -195,7 +195,7 @@ public class ECKeyUtil {
 	 * @return keyId
 	 * @throws Exception
 	 */
-	public static BigDecimal publicKeyHexToKeyId(String publicKeyHex) throws Exception {
+	public static String publicKeyHexToKeyId(String publicKeyHex) throws Exception {
 		String pub = substring(publicKeyHex, 2);
 		byte[] pubhex = decodeHex(pub);
 		byte[] sha256 = getSHA(pubhex, "SHA-256");
@@ -211,11 +211,11 @@ public class ECKeyUtil {
 //		out.println("keyIdb:"+keyIdb);
 //		long keyId = crc64 - (crc64 % 10) + addrChecksum;
 //		BigDecimal keyIdb = longParseUnsigned(keyId);
-		return keyIdb;
+		return keyIdb.toString();
 	}
 
 	public static String publicKeyHexToAddress(String publicKeyHex) throws Exception {
-		String keyId = publicKeyHexToKeyId(publicKeyHex).toString();
+		String keyId = publicKeyHexToKeyId(publicKeyHex);
 		String keyIdstr = repeat("0", 20 - keyId.length()) + keyId;
 		char[] val = keyIdstr.toCharArray();
 		String address = "";
