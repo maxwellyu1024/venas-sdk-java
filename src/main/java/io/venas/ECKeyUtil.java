@@ -311,7 +311,7 @@ public class ECKeyUtil {
 		return messageDigest.digest();
 	}
 
-	private static int checkSum(byte[] val) {
+	public static int checkSum(byte[] val) {
 		int one = 0, two = 0;
 		for (int i = 0; i < val.length - 1; i++) {
 			byte ch = val[i];
@@ -497,7 +497,7 @@ public class ECKeyUtil {
 		byte[] digest = md.digest();
 		String hexdigest = encodeHexString(digest); // BaseEncoding.base16().lowerCase().encode(digest);
 
-		out.println("wordlist digest mismatch\n" + hexdigest.toLowerCase().equals(BIP39_ENGLISH_SHA256));
+//		out.println("wordlist digest mismatch\n" + hexdigest.toLowerCase().equals(BIP39_ENGLISH_SHA256));
 
 		SecureRandom random = new SecureRandom();
 
